@@ -1,3 +1,9 @@
+import { Navbar } from './features/navbar/Navbar';
+
 export const App = () => {
-  return <div>Hello world</div>;
+  return (
+    <main>
+      <Navbar />
+    </main>
+  );
 };
