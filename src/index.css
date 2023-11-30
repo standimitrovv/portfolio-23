@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: GeistMono;
+  src: url('./assets/fonts/GeistMono-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Permanent Marker;
+  src: url('./assets/fonts/PermanentMarker-Regular.ttf') format('truetype');
+}
