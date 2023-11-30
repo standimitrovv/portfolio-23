@@ -1,4 +1,4 @@
-type Tabs = 'About' | 'Experience' | 'Contact';
+import { Tabs } from './Tabs';
 
 interface Section {
   name: Tabs;
