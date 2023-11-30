@@ -2,17 +2,21 @@ import { Tabs } from './Tabs';
 
 interface Section {
   name: Tabs;
+  href: Lowercase<Tabs>;
 }
 
 const sections: Section[] = [
   {
     name: 'About',
+    href: 'about',
   },
   {
     name: 'Experience',
+    href: 'experience',
   },
   {
     name: 'Contact',
+    href: 'contact',
   },
 ];
 
@@ -23,10 +27,10 @@ export const Navbar: React.FunctionComponent = () => {
         <span className='font-permanentMarker text-lg'>Stanimir Dimitrov</span>
 
         <ul className='flex gap-12 items-center'>
-          {sections.map((s) => (
-            <li className='list-none'>
+          {sections.map((s, index) => (
+            <li key={`${s.name}-${s.href}-${index}`} className='list-none'>
               <a
-                href='#'
+                href={`#${s.href}`}
                 className='hover:text-[#6E57E0] hover:border-b cursor-pointer py-1'
               >
                 <span>{s.name}</span>
