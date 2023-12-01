@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { colors } from '../../Styles';
 import { Tabs } from './Tabs';
 import { HamburgerButton } from './components/HamburgerButton';
@@ -6,6 +7,10 @@ import { useMobileMenu } from './hooks/UseMobileMenu';
 
 export const Navbar: React.FunctionComponent = () => {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
+
+  const [activeTab, setActiveTab] = useState<Tabs>('About');
+
+  const handleTabClick = setActiveTab;
 
   return (
     <header className='relative border-b'>
@@ -25,9 +30,10 @@ export const Navbar: React.FunctionComponent = () => {
 
         <ul className='hidden md:flex gap-12 items-center'>
           {renderSections({
-            addSelectedSectionStyles: (path: string) =>
+            onClick: handleTabClick,
+            addSelectedSectionStyles: (path: Tabs) =>
               `${
-                path === 'about' ? `border-b text-[${colors.activeText}]` : ''
+                activeTab === path ? `border-b text-[${colors.activeText}]` : ''
               }`,
           })}
         </ul>
@@ -71,8 +77,8 @@ const sections: Section[] = [
 
 interface Dependencies {
   additionalStyles?: string;
-  addSelectedSectionStyles?: (path: string) => string;
-  onClick?: () => void;
+  addSelectedSectionStyles?: (path: Tabs) => string;
+  onClick: (tab: Tabs) => void;
 }
 
 const renderSections = ({
@@ -84,14 +90,14 @@ const renderSections = ({
     <li
       key={`${s.name}-${s.href}-${index}`}
       className={`${additionalStyles} list-none`}
-      onClick={onClick}
+      onClick={() => onClick(s.name)}
     >
       <a
         href={`#${s.href}`}
         className={`md:hover:text-[${
           colors.activeText
         }] md:hover:border-b cursor-pointer py-1 ${addSelectedSectionStyles?.(
-          s.href
+          s.name
         )}`}
       >
         <span>{s.name}</span>
