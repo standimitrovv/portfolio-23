@@ -25,7 +25,6 @@ export const Navbar: React.FunctionComponent = () => {
 
         <ul className='hidden md:flex gap-12 items-center'>
           {renderSections({
-            onClick: closeMenu,
             addSelectedSectionStyles: (path: string) =>
               `${
                 path === 'about' ? `border-b text-[${colors.activeText}]` : ''
@@ -73,7 +72,7 @@ const sections: Section[] = [
 interface Dependencies {
   additionalStyles?: string;
   addSelectedSectionStyles?: (path: string) => string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const renderSections = ({
