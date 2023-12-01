@@ -3,6 +3,8 @@ import { HamburgerButton } from './components/HamburgerButton';
 import { MobileMenu } from './components/MobileMenu';
 import { useMobileMenu } from './hooks/UseMobileMenu';
 
+const SELECTED_SECTION_COLOR = '#6E57E0';
+
 export const Navbar: React.FunctionComponent = () => {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
 
@@ -23,7 +25,15 @@ export const Navbar: React.FunctionComponent = () => {
         <HamburgerButton triggerAnimation={isMenuOpen} onClick={toggleMenu} />
 
         <ul className='hidden md:flex gap-12 items-center'>
-          {renderSections({ onClick: closeMenu })}
+          {renderSections({
+            onClick: closeMenu,
+            addSelectedSectionStyles: (path: string) =>
+              `${
+                path === 'about'
+                  ? `border-b text-[${SELECTED_SECTION_COLOR}]`
+                  : ''
+              }`,
+          })}
         </ul>
       </section>
 
@@ -65,10 +75,15 @@ const sections: Section[] = [
 
 interface Dependencies {
   additionalStyles?: string;
+  addSelectedSectionStyles?: (path: string) => string;
   onClick: () => void;
 }
 
-const renderSections = ({ onClick, additionalStyles }: Dependencies) =>
+const renderSections = ({
+  onClick,
+  additionalStyles,
+  addSelectedSectionStyles,
+}: Dependencies) =>
   sections.map((s, index) => (
     <li
       key={`${s.name}-${s.href}-${index}`}
@@ -77,7 +92,9 @@ const renderSections = ({ onClick, additionalStyles }: Dependencies) =>
     >
       <a
         href={`#${s.href}`}
-        className='hover:text-[#6E57E0] hover:border-b cursor-pointer py-1'
+        className={`md:hover:text-[${SELECTED_SECTION_COLOR}] md:hover:border-b cursor-pointer py-1 ${addSelectedSectionStyles?.(
+          s.href
+        )}`}
       >
         <span>{s.name}</span>
       </a>
