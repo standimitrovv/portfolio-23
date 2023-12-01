@@ -1,9 +1,8 @@
+import { colors } from '../../Styles';
 import { Tabs } from './Tabs';
 import { HamburgerButton } from './components/HamburgerButton';
 import { MobileMenu } from './components/MobileMenu';
 import { useMobileMenu } from './hooks/UseMobileMenu';
-
-const SELECTED_SECTION_COLOR = '#6E57E0';
 
 export const Navbar: React.FunctionComponent = () => {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
@@ -29,9 +28,7 @@ export const Navbar: React.FunctionComponent = () => {
             onClick: closeMenu,
             addSelectedSectionStyles: (path: string) =>
               `${
-                path === 'about'
-                  ? `border-b text-[${SELECTED_SECTION_COLOR}]`
-                  : ''
+                path === 'about' ? `border-b text-[${colors.activeText}]` : ''
               }`,
           })}
         </ul>
@@ -92,7 +89,9 @@ const renderSections = ({
     >
       <a
         href={`#${s.href}`}
-        className={`md:hover:text-[${SELECTED_SECTION_COLOR}] md:hover:border-b cursor-pointer py-1 ${addSelectedSectionStyles?.(
+        className={`md:hover:text-[${
+          colors.activeText
+        }] md:hover:border-b cursor-pointer py-1 ${addSelectedSectionStyles?.(
           s.href
         )}`}
       >
