@@ -7,10 +7,12 @@ export const Navbar: React.FunctionComponent = () => {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
 
   return (
-    <header className='relative'>
+    <header className='relative border-b'>
       <section
         id='desktop-menu'
-        className='flex justify-between items-center p-4 max-w-5xl mx-auto border-b'
+        className={`flex justify-between items-center p-4 max-w-5xl mx-auto ${
+          isMenuOpen && 'border-b'
+        }`}
       >
         <a href='#'>
           <span className='font-permanentMarker text-lg'>
