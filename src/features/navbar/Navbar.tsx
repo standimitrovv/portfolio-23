@@ -7,10 +7,10 @@ export const Navbar: React.FunctionComponent = () => {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
 
   return (
-    <header className='relative border-b'>
+    <header className='relative'>
       <section
         id='desktop-menu'
-        className='flex justify-between items-center p-4 max-w-5xl mx-auto'
+        className='flex justify-between items-center p-4 max-w-5xl mx-auto border-b'
       >
         <a href='#'>
           <span className='font-permanentMarker text-lg'>
@@ -18,13 +18,11 @@ export const Navbar: React.FunctionComponent = () => {
           </span>
         </a>
 
-        <div>
-          <HamburgerButton triggerAnimation={isMenuOpen} onClick={toggleMenu} />
+        <HamburgerButton triggerAnimation={isMenuOpen} onClick={toggleMenu} />
 
-          <ul className='hidden md:flex gap-12 items-center'>
-            {renderSections({ onClick: closeMenu })}
-          </ul>
-        </div>
+        <ul className='hidden md:flex gap-12 items-center'>
+          {renderSections({ onClick: closeMenu })}
+        </ul>
       </section>
 
       {isMenuOpen && (
