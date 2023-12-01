@@ -1,7 +1,10 @@
 import { Tabs } from './Tabs';
 import { HamburgerButton } from './components/HamburgerButton';
+import { useMobileMenu } from './hooks/UseMobileMenu';
 
 export const Navbar: React.FunctionComponent = () => {
+  const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
+
   return (
     <header className='border-b'>
       <section
@@ -15,10 +18,10 @@ export const Navbar: React.FunctionComponent = () => {
         </a>
 
         <div>
-          <HamburgerButton triggerAnimation={true} onClick={() => {}} />
+          <HamburgerButton triggerAnimation={isMenuOpen} onClick={toggleMenu} />
 
           <ul className='hidden md:flex gap-12 items-center'>
-            {renderSections()}
+            {renderSections({ onClick: closeMenu })}
           </ul>
         </div>
       </section>
@@ -50,9 +53,17 @@ const sections: Section[] = [
   },
 ];
 
-const renderSections = () =>
+interface Dependencies {
+  onClick: () => void;
+}
+
+const renderSections = ({ onClick }: Dependencies) =>
   sections.map((s, index) => (
-    <li key={`${s.name}-${s.href}-${index}`} className='list-none'>
+    <li
+      key={`${s.name}-${s.href}-${index}`}
+      className='list-none'
+      onClick={onClick}
+    >
       <a
         href={`#${s.href}`}
         className='hover:text-[#6E57E0] hover:border-b cursor-pointer py-1'
