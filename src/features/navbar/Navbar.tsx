@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { colors } from '../../Styles';
-import { Tabs } from './Tabs';
+import { Sections } from './Sections';
 import { HamburgerButton } from './components/HamburgerButton';
 import { MobileMenu } from './components/MobileMenu';
 import { useMobileMenu } from './hooks/UseMobileMenu';
@@ -8,9 +8,11 @@ import { useMobileMenu } from './hooks/UseMobileMenu';
 export const Navbar: React.FunctionComponent = () => {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
 
-  const [activeTab, setActiveTab] = useState<Tabs>('About');
+  const [activeSection, setActiveSection] = useState<Sections>('About');
 
-  const handleTabClick = setActiveTab;
+  const handleTabClick = (section: Sections) => {
+    setActiveSection(section);
+  };
 
   return (
     <header className='relative border-b'>
@@ -31,9 +33,11 @@ export const Navbar: React.FunctionComponent = () => {
         <ul className='hidden md:flex gap-12 items-center'>
           {renderSections({
             onClick: handleTabClick,
-            addSelectedSectionStyles: (path: Tabs) =>
+            addSelectedSectionStyles: (section: Sections) =>
               `${
-                activeTab === path ? `border-b text-[${colors.activeText}]` : ''
+                activeSection === section
+                  ? `border-b text-[${colors.activeText}]`
+                  : ''
               }`,
           })}
         </ul>
@@ -52,8 +56,8 @@ export const Navbar: React.FunctionComponent = () => {
 };
 
 interface Section {
-  name: Tabs;
-  href: Lowercase<Tabs>;
+  name: Sections;
+  href: Lowercase<Sections>;
 }
 
 const sections: Section[] = [
@@ -77,8 +81,8 @@ const sections: Section[] = [
 
 interface Dependencies {
   additionalStyles?: string;
-  addSelectedSectionStyles?: (path: Tabs) => string;
-  onClick: (tab: Tabs) => void;
+  addSelectedSectionStyles?: (section: Sections) => string;
+  onClick: (section: Sections) => void;
 }
 
 const renderSections = ({
