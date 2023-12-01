@@ -1,12 +1,13 @@
 import { Tabs } from './Tabs';
 import { HamburgerButton } from './components/HamburgerButton';
+import { MobileMenu } from './components/MobileMenu';
 import { useMobileMenu } from './hooks/UseMobileMenu';
 
 export const Navbar: React.FunctionComponent = () => {
   const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
 
   return (
-    <header className='border-b'>
+    <header className='relative border-b'>
       <section
         id='desktop-menu'
         className='flex justify-between items-center p-4 max-w-5xl mx-auto'
@@ -25,6 +26,15 @@ export const Navbar: React.FunctionComponent = () => {
           </ul>
         </div>
       </section>
+
+      {isMenuOpen && (
+        <MobileMenu>
+          {renderSections({
+            additionalStyles: 'py-6 text-center w-full',
+            onClick: closeMenu,
+          })}
+        </MobileMenu>
+      )}
     </header>
   );
 };
@@ -54,14 +64,15 @@ const sections: Section[] = [
 ];
 
 interface Dependencies {
+  additionalStyles?: string;
   onClick: () => void;
 }
 
-const renderSections = ({ onClick }: Dependencies) =>
+const renderSections = ({ onClick, additionalStyles }: Dependencies) =>
   sections.map((s, index) => (
     <li
       key={`${s.name}-${s.href}-${index}`}
-      className='list-none'
+      className={`${additionalStyles} list-none`}
       onClick={onClick}
     >
       <a
