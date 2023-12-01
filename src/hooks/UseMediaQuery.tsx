@@ -4,7 +4,7 @@ export const useMediaQuery = (minWidthPx: string) => {
   const [matches, setMatches] = useState<boolean>(false);
 
   useEffect(() => {
-    const matchQueryList = window.matchMedia(`(min-width: ${minWidthPx}px)`);
+    const matchQueryList = window.matchMedia(`(min-width: ${minWidthPx})`);
 
     function handleChange(e: MediaQueryListEvent) {
       setMatches(e.matches);

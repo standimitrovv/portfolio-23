@@ -1,4 +1,5 @@
 import { createContext, useCallback, useEffect, useState } from 'react';
+import { mediaQueries } from '../../../Styles';
 import { useMediaQuery } from '../../../hooks/UseMediaQuery';
 
 interface Context {
@@ -20,7 +21,7 @@ interface Props {
 export const MobileMenuProvider: React.FunctionComponent<Props> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  const isMobile = !useMediaQuery('768');
+  const isMobile = !useMediaQuery(mediaQueries.md);
 
   const toggleMenu = useCallback(
     () => setIsMenuOpen((prevState) => !prevState),
