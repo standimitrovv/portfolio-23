@@ -12,7 +12,16 @@ export const HamburgerButton: React.FunctionComponent<Props> = (props) => {
       }`}
       onClick={props.onClick}
     >
-      <div className='bg-white w-8 h-1 rounded absolute top-4 -mt-0.5 transition-all duration-500 before:countent-[""] before:bg-white before:w-8 before:h-1 before:rounded before:absolute before:-translate-x-4 before:-translate-y-3 before:transition-all before:duration-500 after:countent-[""] after:bg-white after:w-8 after:h-1 after:rounded after:absolute after:transition-all after:duration-500 after:-translate-x-4 after:translate-y-3' />
+      <div
+        className={`bg-black w-8 h-1 rounded absolute top-4 -mt-0.5 transition-all duration-500 ${createPseudoClasses(
+          'before'
+        )} ${createPseudoClasses('after')}`}
+      />
     </button>
   );
 };
+
+const createPseudoClasses = (type: 'before' | 'after') =>
+  `${type}:countent-[""] ${type}:bg-black ${type}:w-8 ${type}:h-1 ${type}:rounded ${type}:absolute ${type}:-translate-x-4 ${type}:${
+    type === 'before' ? '-' : ''
+  }translate-y-3 ${type}:transition-all ${type}:duration-500`;
