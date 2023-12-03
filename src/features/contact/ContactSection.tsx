@@ -1,3 +1,5 @@
+import { SocialMediaLinks } from '../../components/SocialMediaLinks';
+
 export const ContactSection = () => {
   return (
     <section className='max-w-5xl py-4 px-6'>
@@ -21,7 +23,7 @@ export const ContactSection = () => {
               I am <strong>always</strong> open to a conversation.
             </span>
           </div>
-          <div>social links</div>
+          <SocialMediaLinks />
         </div>
         <div>contact form</div>
       </div>
