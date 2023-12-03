@@ -2,8 +2,8 @@ import { SocialMediaLinks } from '../../components/SocialMediaLinks';
 
 export const ContactSection = () => {
   return (
-    <section className='max-w-5xl py-4 px-6 mx-auto'>
-      <h1 className='text-2xl font-bold mb-12'>
+    <section className='max-w-5xl py-8 px-6 mx-auto'>
+      <h1 className='text-2xl font-bold mb-9'>
         Do not hesitate to contact me!
       </h1>
 
