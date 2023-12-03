@@ -1,4 +1,5 @@
 import { SocialMediaLinks } from '../../components/SocialMediaLinks';
+import { ContactForm } from './components/ContactForm';
 import { ContactMessage } from './components/ContactMessage';
 
 export const ContactSection = () => {
@@ -8,12 +9,13 @@ export const ContactSection = () => {
         Do not hesitate to contact me!
       </h1>
 
-      <div className='flex justify-between'>
+      <div className='flex justify-between gap-14'>
         <div className='flex flex-col'>
           <ContactMessage />
           <SocialMediaLinks />
         </div>
-        <div>contact form</div>
+
+        <ContactForm />
       </div>
     </section>
   );
