@@ -38,10 +38,10 @@ export const ContactForm = () => {
 
       <button
         type='submit'
-        className='bg-activeText py-2 rounded-md text-white flex justify-center items-center gap-2'
+        className='bg-activeText py-2 rounded-md text-white flex justify-center items-center gap-2 group'
       >
         <span>Send</span>
-        <ArrowUpRightIcon className='h-4 w-4' />
+        <ArrowUpRightIcon className='h-4 w-4 transform group-hover:-translate-y-1 group-hover:translate-x-1 translate-y-px motion-reduce:transition-none transition-all' />
       </button>
     </form>
   );
