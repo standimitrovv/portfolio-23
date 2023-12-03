@@ -1,3 +1,5 @@
+import { ArrowUpRightIcon } from '@heroicons/react/24/solid';
+
 export const ContactForm = () => {
   return (
     <form
@@ -36,9 +38,10 @@ export const ContactForm = () => {
 
       <button
         type='submit'
-        className='bg-activeText py-2 rounded-md text-white'
+        className='bg-activeText py-2 rounded-md text-white flex justify-center items-center gap-2'
       >
-        Send
+        <span>Send</span>
+        <ArrowUpRightIcon className='h-4 w-4' />
       </button>
     </form>
   );
