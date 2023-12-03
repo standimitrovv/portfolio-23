@@ -15,7 +15,7 @@ export const MobileMenuContext = createContext<Context>({
 });
 
 interface Props {
-  children: JSX.Element;
+  children: JSX.Element[];
 }
 
 export const MobileMenuProvider: React.FunctionComponent<Props> = (props) => {

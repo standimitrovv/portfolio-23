@@ -17,7 +17,7 @@ export const Navbar: React.FunctionComponent = () => {
     <header className='relative border-b'>
       <section
         id='desktop-menu'
-        className={`flex justify-between items-center p-4 max-w-5xl mx-auto ${
+        className={`flex justify-between items-center py-4 px-6 max-w-5xl mx-auto ${
           isMenuOpen && 'border-b'
         }`}
       >
