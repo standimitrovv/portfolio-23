@@ -6,6 +6,11 @@ export default {
       colors: {
         activeText: '#6E57E0',
       },
+      fill: {
+        instagram: '#9a3412',
+        github: '#000',
+        linkedin: '#1d4ed8',
+      },
       fontFamily: {
         geistMono: 'GeistMono',
         permanentMarker: 'Permanent Marker',
