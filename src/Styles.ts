@@ -1,7 +1,3 @@
-export const colors = {
-  activeText: '#6E57E0',
-};
-
 type BreakPoints = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export const mediaQueries: Record<BreakPoints, string> = {

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { colors } from '../../Styles';
 import { Sections } from './Sections';
 import { HamburgerButton } from './components/HamburgerButton';
 import { MobileMenu } from './components/MobileMenu';
@@ -34,11 +33,7 @@ export const Navbar: React.FunctionComponent = () => {
           {renderSections({
             onClick: handleTabClick,
             addSelectedSectionStyles: (section: Sections) =>
-              `${
-                activeSection === section
-                  ? `border-b text-[${colors.activeText}]`
-                  : ''
-              }`,
+              `${activeSection === section ? `border-b text-activeText` : ''}`,
           })}
         </ul>
       </section>
@@ -98,9 +93,7 @@ const renderSections = ({
     >
       <a
         href={`#${s.href}`}
-        className={`md:hover:text-[${
-          colors.activeText
-        }] md:hover:border-b cursor-pointer py-1 ${addSelectedSectionStyles?.(
+        className={`md:hover:text-activeText md:hover:border-b cursor-pointer py-1 ${addSelectedSectionStyles?.(
           s.name
         )}`}
       >

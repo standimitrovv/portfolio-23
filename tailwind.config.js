@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}', './src/assets/fonts'],
   theme: {
     extend: {
+      colors: {
+        activeText: '#6E57E0',
+      },
       fontFamily: {
         geistMono: 'GeistMono',
         permanentMarker: 'Permanent Marker',
