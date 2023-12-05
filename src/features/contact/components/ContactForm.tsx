@@ -55,6 +55,7 @@ export const ContactForm = () => {
         id='name'
         placeholder='What is your name?'
         className='py-2 px-4 outline-none rounded-md mt-2 mb-4'
+        disabled={isSubmittingForm}
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
@@ -66,6 +67,7 @@ export const ContactForm = () => {
         id='email'
         placeholder='What is your email?'
         className='py-2 px-4 outline-none rounded-md mt-2 mb-4'
+        disabled={isSubmittingForm}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -79,6 +81,7 @@ export const ContactForm = () => {
         cols={12}
         placeholder='How can I help you?'
         className='py-2 px-4 outline-none rounded-md mt-2 mb-4'
+        disabled={isSubmittingForm}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
