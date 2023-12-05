@@ -9,7 +9,7 @@ export const ContactSection = () => {
         Do not hesitate to contact me!
       </h1>
 
-      <div className='flex justify-between gap-14'>
+      <div className='flex flex-col md:flex-row justify-between gap-14'>
         <div className='flex flex-col'>
           <ContactMessage />
           <SocialMediaLinks />

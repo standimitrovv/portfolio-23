@@ -2,10 +2,7 @@ import { ArrowUpRightIcon } from '@heroicons/react/24/solid';
 
 export const ContactForm = () => {
   return (
-    <form
-      className='flex flex-col w-[80%]'
-      onSubmit={(e) => e.preventDefault()}
-    >
+    <form className='flex flex-col w-full' onSubmit={(e) => e.preventDefault()}>
       <label htmlFor='name' className='font-semibold'>
         Name
       </label>
