@@ -32,12 +32,18 @@ export const SocialMediaLinks: React.FunctionComponent = () => {
   return (
     <div className='flex gap-6'>
       {socialMediaLinks.map((sm) => (
-        <a key={sm.mediaName} href={sm.href} target='_blank' rel='noreferrer'>
+        <a
+          key={sm.mediaName}
+          href={sm.href}
+          target='_blank'
+          rel='noreferrer'
+          className='h-6 w-6'
+        >
           <svg
-            className={`hover:animate-bounce ${svgColors[sm.mediaName]}`}
+            className={`hover:animate-bounce h-full w-full ${
+              svgColors[sm.mediaName]
+            }`}
             xmlns='http://www.w3.org/2000/svg'
-            height='25'
-            width='25'
             viewBox='0 0 448 512'
           >
             <path d={sm.icon} />
