@@ -29,7 +29,7 @@ export const ContactForm = () => {
         id='message'
         rows={5}
         cols={12}
-        placeholder='What is on your mind?'
+        placeholder='How can I help you?'
         className='py-2 px-4 outline-none rounded-md mt-2 mb-4'
       />
 
