@@ -1,5 +1,6 @@
 import { ArrowUpRightIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 import { useNotifications } from '../../../hooks/UseNotifications';
 import { useSendEmail } from '../hooks/UseSendEmail';
 
@@ -15,15 +16,32 @@ export const ContactForm = () => {
 
   const [message, setMessage] = useState<string>('');
 
-  const isSubmitButtonDisabled = !name || !email || !message;
+  const [isSubmittingForm, setIsSubmittingForm] = useState<boolean>(false);
+
+  const isSubmitButtonDisabled =
+    !name || !email || !message || isSubmittingForm;
+
+  const clearFormFields = () => {
+    setName('');
+
+    setEmail('');
+
+    setMessage('');
+  };
 
   const handleSubmit = async () => {
+    setIsSubmittingForm(true);
+
     try {
       await sendEmail({ user_name: name, message, user_email: email });
 
-      createSuccessNotification('Email successfulyy sent!');
+      createSuccessNotification('Email successfully sent!');
     } catch (error) {
       createErrorNotification("Email wasn't sent. Try again later.");
+    } finally {
+      setIsSubmittingForm(false);
+
+      clearFormFields();
     }
   };
 
@@ -67,12 +85,18 @@ export const ContactForm = () => {
 
       <button
         type='submit'
-        className='bg-activeText py-2 rounded-md text-white flex justify-center items-center gap-2 group'
+        className='bg-activeText py-2 rounded-md text-white flex justify-center items-center gap-2 group cursor-pointer'
         disabled={isSubmitButtonDisabled}
         onClick={handleSubmit}
       >
-        <span>Send</span>
-        <ArrowUpRightIcon className='h-4 w-4 transform group-hover:-translate-y-1 group-hover:translate-x-1 translate-y-px motion-reduce:transition-none transition-all' />
+        {isSubmittingForm ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <span>Send</span>
+            <ArrowUpRightIcon className='h-4 w-4 transform group-hover:-translate-y-1 group-hover:translate-x-1 translate-y-px motion-reduce:transition-none transition-all' />
+          </>
+        )}
       </button>
     </form>
   );
