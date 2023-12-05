@@ -39,15 +39,14 @@ export const ContactForm = () => {
   const isSubmitButtonDisabled =
     !Object.values(formValidation).every(Boolean) || isSubmittingForm;
 
-  const handleNameInputFieldValidation = (
-    e: React.KeyboardEvent<HTMLInputElement>
+  const validateField = (
+    condition: boolean,
+    formValidationProp: keyof FormValidationProperties
   ) => {
-    const fieldValue = e.currentTarget.value;
-
-    if (fieldValue.length < 2) {
+    if (condition) {
       setFormValidation((prevState) => ({
         ...prevState,
-        isNameValid: false,
+        [formValidationProp]: false,
       }));
 
       return;
@@ -55,8 +54,16 @@ export const ContactForm = () => {
 
     setFormValidation((prevState) => ({
       ...prevState,
-      isNameValid: true,
+      [formValidationProp]: true,
     }));
+  };
+
+  const handleNameInputFieldValidation = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    const fieldValue = e.currentTarget.value;
+
+    validateField(fieldValue.length < 2, 'isNameValid');
   };
 
   const handleEmailFieldValidation = (
@@ -64,21 +71,10 @@ export const ContactForm = () => {
   ) => {
     const fieldValue = e.currentTarget.value;
 
-    if (
-      !!fieldValue.match('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$') === false
-    ) {
-      setFormValidation((prevState) => ({
-        ...prevState,
-        isEmailValid: false,
-      }));
-
-      return;
-    }
-
-    setFormValidation((prevState) => ({
-      ...prevState,
-      isEmailValid: true,
-    }));
+    validateField(
+      !fieldValue.match('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+      'isEmailValid'
+    );
   };
 
   const handleMessageFieldValidation = (
@@ -86,19 +82,7 @@ export const ContactForm = () => {
   ) => {
     const fieldValue = e.currentTarget.value.split(' ').join('').trim();
 
-    if (fieldValue.length < 8) {
-      setFormValidation((prevState) => ({
-        ...prevState,
-        isMessageValid: false,
-      }));
-
-      return;
-    }
-
-    setFormValidation((prevState) => ({
-      ...prevState,
-      isMessageValid: true,
-    }));
+    validateField(fieldValue.length < 8, 'isMessageValid');
   };
 
   const defaultForm = () => {
