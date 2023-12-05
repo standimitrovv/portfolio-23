@@ -5,7 +5,7 @@ const commonProps: ToastContainerProps = {
   autoClose: 4000,
   closeOnClick: true,
   pauseOnHover: true,
-  theme: 'light',
+  theme: 'dark',
   hideProgressBar: true,
 };
 
@@ -25,6 +25,7 @@ export const useNotifications = () => {
   const createErrorNotification = (text: string) => {
     toast.error(text, {
       ...commonProps,
+      className: 'width: 300px',
     });
   };
 
