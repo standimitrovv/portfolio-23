@@ -10,7 +10,7 @@ export const Navbarv2: React.FunctionComponent = () => {
   };
 
   return (
-    <header className='border-b py-24 sticky top-0 max-h-screen flex flex-col justify-between items-center'>
+    <header className='py-24 sticky top-0 max-h-screen flex flex-col justify-between items-center'>
       <div>
         <div className='text-center'>
           <span className='font-permanentMarker text-4xl'>
@@ -20,7 +20,7 @@ export const Navbarv2: React.FunctionComponent = () => {
           <p>Description</p>
         </div>
 
-        <ul className='flex flex-col gap-4 items-center mt-24'>
+        <ul className='flex flex-col gap-4 items-center mt-32'>
           {renderSections({
             onClick: handleTabClick,
             addSelectedSectionStyles: (section: Sections) =>

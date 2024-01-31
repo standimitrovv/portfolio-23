@@ -112,7 +112,10 @@ export const ContactForm = () => {
   };
 
   return (
-    <form className='flex flex-col w-full' onSubmit={(e) => e.preventDefault()}>
+    <form
+      className='flex flex-col w-full border p-4 rounded-md'
+      onSubmit={(e) => e.preventDefault()}
+    >
       <label htmlFor='name' className='font-semibold'>
         Name
       </label>
@@ -121,8 +124,8 @@ export const ContactForm = () => {
           type='text'
           id='name'
           placeholder='What is your name?'
-          className={`py-2 pl-4 pr-10 outline-none rounded-md w-full ${
-            formValidation.isNameValid === false ? 'border border-red-500' : ''
+          className={`py-2 pl-4 pr-10 outline-1 border rounded-md w-full ${
+            formValidation.isNameValid === false ? 'border-red-500' : ''
           }`}
           disabled={isSubmittingForm}
           value={name}
@@ -140,8 +143,8 @@ export const ContactForm = () => {
           type='email'
           id='email'
           placeholder='What is your email?'
-          className={`py-2 pl-4 pr-10 outline-none rounded-md w-full ${
-            formValidation.isEmailValid === false ? 'border border-red-500' : ''
+          className={`py-2 pl-4 pr-10 outline-1 border rounded-md w-full ${
+            formValidation.isEmailValid === false ? 'border-red-500' : ''
           }`}
           disabled={isSubmittingForm}
           value={email}
@@ -161,10 +164,8 @@ export const ContactForm = () => {
           rows={5}
           cols={12}
           placeholder='How can I help you?'
-          className={`py-2 pl-4 pr-10 outline-none rounded-md w-full ${
-            formValidation.isMessageValid === false
-              ? 'border border-red-500'
-              : ''
+          className={`py-2 pl-4 pr-10 outline-1 border rounded-md w-full ${
+            formValidation.isMessageValid === false ? 'border-red-500' : ''
           }`}
           disabled={isSubmittingForm}
           value={message}

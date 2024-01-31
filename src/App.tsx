@@ -10,11 +10,11 @@ export const App = () => {
   const { containerConfiguration } = useNotifications();
 
   return (
-    <main className='font-geistMono text-sm leading-7 grid grid-cols-2 max-w-7xl m-auto'>
+    <main className='font-geistMono text-sm leading-7 grid grid-cols-2 max-w-7xl mx-auto min-h-screen'>
       <MobileMenuProvider>
         <Navbarv2 />
 
-        <div>
+        <div className='py-24'>
           <ExperienceSection />
 
           <ContactSection />
