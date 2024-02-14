@@ -1,12 +1,8 @@
 import { useState } from 'react';
+import { SocialMediaLinks } from '../../components/SocialMediaLinks';
 import { Sections } from './Sections';
-import { HamburgerButton } from './components/HamburgerButton';
-import { MobileMenu } from './components/MobileMenu';
-import { useMobileMenu } from './hooks/UseMobileMenu';
 
 export const Navbar: React.FunctionComponent = () => {
-  const { isMenuOpen, toggleMenu, closeMenu } = useMobileMenu();
-
   const [activeSection, setActiveSection] = useState<Sections>('About');
 
   const handleTabClick = (section: Sections) => {
@@ -14,38 +10,26 @@ export const Navbar: React.FunctionComponent = () => {
   };
 
   return (
-    <header className='relative border-b'>
-      <section
-        id='desktop-menu'
-        className={`flex justify-between items-center py-4 px-6 max-w-5xl mx-auto ${
-          isMenuOpen && 'border-b'
-        }`}
-      >
-        <a href='#'>
-          <span className='font-permanentMarker text-lg'>
+    <header className='py-24 sticky top-0 max-h-screen flex flex-col justify-between items-center'>
+      <div>
+        <div className='text-center'>
+          <span className='font-permanentMarker text-4xl'>
             Stanimir Dimitrov
           </span>
-        </a>
 
-        <HamburgerButton triggerAnimation={isMenuOpen} onClick={toggleMenu} />
+          <p>Description</p>
+        </div>
 
-        <ul className='hidden md:flex gap-12 items-center'>
+        <ul className='flex flex-col gap-4 items-center mt-32'>
           {renderSections({
             onClick: handleTabClick,
             addSelectedSectionStyles: (section: Sections) =>
               `${activeSection === section ? `border-b text-activeText` : ''}`,
           })}
         </ul>
-      </section>
+      </div>
 
-      {isMenuOpen && (
-        <MobileMenu>
-          {renderSections({
-            additionalStyles: 'py-6 text-center w-full',
-            onClick: closeMenu,
-          })}
-        </MobileMenu>
-      )}
+      <SocialMediaLinks />
     </header>
   );
 };
