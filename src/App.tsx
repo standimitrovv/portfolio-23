@@ -1,5 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AboutSection } from './features/about/AboutSection';
 import { ContactSection } from './features/contact/ContactSection';
 import { ExperienceSection } from './features/experience/ExperienceSection';
 import { Navbar } from './features/navbar/Navbar';
@@ -15,6 +16,8 @@ export const App = () => {
         <Navbar />
 
         <div className='py-24'>
+          <AboutSection />
+
           <ExperienceSection />
 
           <ContactSection />
