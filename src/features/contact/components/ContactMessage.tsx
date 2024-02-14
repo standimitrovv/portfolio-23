@@ -1,6 +1,6 @@
 export const ContactMessage = () => {
   return (
-    <div>
+    <div className='text-slate-500'>
       <span>
         Feel free to reach out if you are in need of a Frontend Developer.
       </span>
@@ -11,7 +11,8 @@ export const ContactMessage = () => {
       </span>
       <br />
       <span>
-        I am <strong>always</strong> open to a conversation.
+        I am <strong className='text-black'>always</strong> open to a
+        conversation.
       </span>
     </div>
   );
