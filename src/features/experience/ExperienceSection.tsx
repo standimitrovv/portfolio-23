@@ -9,8 +9,9 @@ const workplaces: Workplace[] = [
     href: 'https://www.dtail.com',
     dateFrom: 'FEB, 2022',
     dateTo: 'PRESENT',
-    description: 'Responsible for building and maintaining ....',
-    techStack: ['React', 'Typescript', 'MUI', 'Redux', 'Jest'],
+    description:
+      'I was responsible for building and maintaining a cloud-based go-to-market platform, while working in a collaborative environment with other Frontend engineers and UI/UX designers to ensure we deliver the best possible user experience meanwhile applying the best practices for creating an elegant, efficient, and reusable code.',
+    techStack: ['React', 'Typescript', 'Redux', 'MUI', 'Jest'],
   },
 ];
 

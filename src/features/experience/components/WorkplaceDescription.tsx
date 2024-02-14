@@ -26,7 +26,10 @@ export const WorkplaceDescription: React.FunctionComponent<Props> = ({
 
       <ul className='flex gap-2 mt-4'>
         {workplace.techStack.map((t, index) => (
-          <li key={`${t}-${index}`} className='px-3 py-1 border rounded-xl'>
+          <li
+            key={`${t}-${index}`}
+            className='px-3 py-1 border rounded-xl text-activeText text-sm'
+          >
             {t}
           </li>
         ))}
