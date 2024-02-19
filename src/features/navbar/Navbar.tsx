@@ -17,7 +17,7 @@ export const Navbar: React.FunctionComponent = () => {
             Stanimir Dimitrov
           </span>
 
-          <p>Description</p>
+          <p className='text-xl'>Software Engineer</p>
         </div>
 
         <ul className='flex flex-col gap-4 items-center mt-32'>
