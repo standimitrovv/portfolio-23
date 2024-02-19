@@ -49,10 +49,6 @@ const sections: Section[] = [
     href: 'experience',
   },
   {
-    name: 'Skills',
-    href: 'skills',
-  },
-  {
     name: 'Contact',
     href: 'contact',
   },
