@@ -17,10 +17,7 @@ const workplaces: Workplace[] = [
 
 export const ExperienceSection = () => {
   return (
-    <section
-      id='experience'
-      className='max-w-5xl py-7 px-6 mx-auto flex border-b'
-    >
+    <section id='experience' className='max-w-5xl py-7 px-6 mx-auto flex mb-24'>
       <div>
         {workplaces.map((w) => (
           <WorkplaceDescription key={w.id} workplace={w} />
