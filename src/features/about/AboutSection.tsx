@@ -1,6 +1,10 @@
 export const AboutSection = () => {
   return (
-    <section id='about' className='max-w-5xl py-7 px-6 mx-auto border-b mb-24'>
+    <section
+      data-section
+      id='About'
+      className='max-w-5xl py-7 px-6 mx-auto border-b mb-24'
+    >
       <p className='mb-4'>
         In late 2019, feeling adrift, I stumbled upon my passion for Software
         engineering, thanks to a former university colleague. Embracing the dawn

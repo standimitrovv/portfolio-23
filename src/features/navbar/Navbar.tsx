@@ -1,13 +1,52 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SocialMediaLinks } from '../../components/SocialMediaLinks';
 import { Sections } from './Sections';
 
 export const Navbar: React.FunctionComponent = () => {
+  const sections = useRef<NodeListOf<HTMLElement> | null>(null);
+
   const [activeSection, setActiveSection] = useState<Sections>('About');
 
   const handleTabClick = (section: Sections) => {
     setActiveSection(section);
   };
+
+  const handleScroll = () => {
+    const MARGIN_TOP = 96;
+
+    const pageYOffset = window.scrollY + MARGIN_TOP;
+
+    let newActiveSection: Sections | undefined;
+
+    sections.current?.forEach((section) => {
+      const sectionOffsetTop = section.offsetTop - MARGIN_TOP;
+
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        pageYOffset >= sectionOffsetTop &&
+        pageYOffset < sectionOffsetTop + sectionHeight
+      ) {
+        const sectionId = section.id;
+
+        const formattedSection =
+          sectionId.slice(0, 1).toUpperCase() +
+          sectionId.slice(1).toLowerCase();
+
+        newActiveSection = formattedSection as Sections;
+      }
+    });
+
+    setActiveSection((prevState) => newActiveSection || prevState);
+  };
+
+  useEffect(() => {
+    sections.current = document.querySelectorAll('[data-section]');
+
+    document.addEventListener('scroll', handleScroll);
+
+    return () => document.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <header className='py-24 sticky top-0 max-h-screen flex flex-col justify-between items-center'>
