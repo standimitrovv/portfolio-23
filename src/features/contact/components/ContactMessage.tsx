@@ -1,6 +1,6 @@
 export const ContactMessage = () => {
   return (
-    <div className='text-slate-500'>
+    <div>
       <span>
         Feel free to reach out if you are in need of a Frontend Developer.
       </span>

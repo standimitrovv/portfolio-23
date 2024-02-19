@@ -10,7 +10,7 @@ const workplaces: Workplace[] = [
     dateFrom: 'FEB, 2022',
     dateTo: 'PRESENT',
     description:
-      'I was responsible for building and maintaining a cloud-based go-to-market platform, while working in a collaborative environment with other Frontend engineers and UI/UX designers to ensure we deliver the best possible user experience meanwhile applying the best practices for creating an elegant, efficient, and reusable code.',
+      'I was responsible for building and maintaining a cloud-based go-to-market platform, while working in a collaborative environment with other Frontend engineers and UI/UX designers.',
     techStack: ['React', 'Typescript', 'Redux', 'MUI', 'Jest'],
   },
 ];
